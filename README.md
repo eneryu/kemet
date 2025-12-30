@@ -17,6 +17,12 @@
 
 ---
 
+## 👁️ The Kemet Vision
+
+"Kemet" (Black Land) was the name used by ancient Egyptians to refer to their fertile soil and their nation. This project aims to bridge the gap between the monumental past and the ambitious future. By combining 3D artifacts, historical encyclopedias, and modern urban milestones, Kemet offers a digital tribute to the spirit of Egypt.
+
+---
+
 ## ✨ Features
 
 <table>

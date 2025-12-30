@@ -26,7 +26,8 @@ const config: Config = {
           DEFAULT: '#ffffff',
           card: '#f8f9fa',
         },
-        'kemet-gold': '#FFD700',
+        'kemet-gold': '#c19b57',
+        'gold-light': '#d4b47a',
         'kemet-blue': '#0047AB',
         'kemet-red': '#DC143C',
         'sand': {
