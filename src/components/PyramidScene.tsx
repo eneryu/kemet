@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import EgyptInfo from './EgyptInfo';
+
 
 const heroSlides = [
   {
@@ -429,8 +429,8 @@ export default function PyramidScene() {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index
-                  ? 'bg-kemet-gold w-8'
-                  : 'bg-sand-100/50 hover:bg-sand-100'
+                ? 'bg-kemet-gold w-8'
+                : 'bg-sand-100/50 hover:bg-sand-100'
                 }`}
             />
           ))}
@@ -890,116 +890,6 @@ export default function PyramidScene() {
           </motion.div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gradient-to-b from-stone-900 to-black py-12 border-t-2 border-kemet-gold/30" dir="rtl">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-8">
-            <div className="text-right">
-              <h3 className="text-3xl font-bold text-kemet-gold mb-4 flex items-center gap-2">
-                <span className="text-2xl">𓃭</span>
-                كيمت
-                <span className="text-2xl">𓃭</span>
-              </h3>
-              <p className="text-sand-200 text-sm md:text-base font-noto-kufi-arabic">
-                اكتشف عظمة الحضارة المصرية القديمة والحديثة من خلال رحلة تفاعلية عبر العصور
-              </p>
-            </div>
-
-            <div className="text-right">
-              <h3 className="text-2xl font-bold text-kemet-gold mb-4 flex items-center gap-2">
-                <span className="text-xl">𓂀</span>
-                تواصل معنا
-                <span className="text-xl">𓂀</span>
-              </h3>
-              <ul className="space-y-3">
-                <li>
-                  <a href="mailto:contact@kemet.eg" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
-                    <span className="text-kemet-gold text-sm">𓃾</span>
-                    البريد الإلكتروني
-                  </a>
-                </li>
-                <li>
-                  <a href="tel:+201234567890" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
-                    <span className="text-kemet-gold text-sm">𓃾</span>
-                    الهاتف
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="text-right">
-              <h3 className="text-2xl font-bold text-kemet-gold mb-4 flex items-center gap-2">
-                <span className="text-xl">𓂀</span>
-                روابط سريعة
-                <span className="text-xl">𓂀</span>
-              </h3>
-              <ul className="space-y-3">
-                <li>
-                  <Link href="#history" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
-                    <span className="text-kemet-gold text-sm">𓆣</span>
-                    التاريخ
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#modern" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
-                    <span className="text-kemet-gold text-sm">𓆣</span>
-                    مصر الحديثة
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/gallery" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
-                    <span className="text-kemet-gold text-sm">𓆣</span>
-                    المعرض
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/museum" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
-                    <span className="text-kemet-gold text-sm">𓆣</span>
-                    المتحف
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="text-right">
-              <h3 className="text-2xl font-bold text-kemet-gold mb-4 flex items-center gap-2">
-                <span className="text-xl">𓂀</span>
-                تابعنا
-                <span className="text-xl">𓂀</span>
-              </h3>
-              <ul className="space-y-3">
-                <li>
-                  <a href="#" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
-                    <span className="text-kemet-gold text-sm">𓃾</span>
-                    فيسبوك
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
-                    <span className="text-kemet-gold text-sm">𓃾</span>
-                    تويتر
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
-                    <span className="text-kemet-gold text-sm">𓃾</span>
-                    انستجرام
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-kemet-gold/30 mt-12 pt-8 text-center">
-            <p className="text-sand-300 text-sm md:text-base flex items-center justify-center gap-3">
-              <span className="text-kemet-gold">𓂋</span>
-              جميع الحقوق محفوظة © 2024 - {new Date().getFullYear()} كيميت
-              <span className="text-kemet-gold">𓂋</span>
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 } 

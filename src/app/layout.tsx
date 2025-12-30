@@ -41,6 +41,10 @@ export const metadata: Metadata = {
   themeColor: '#1c1917',
 }
 
+import Footer from '@/components/Footer'
+
+// ... existing imports ...
+
 export default function RootLayout({
   children,
 }: {
@@ -51,6 +55,7 @@ export default function RootLayout({
       <body className={notoKufiArabic.className}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )
