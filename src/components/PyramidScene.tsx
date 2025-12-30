@@ -19,7 +19,7 @@ const heroSlides = [
     id: 2,
     title: "عاصمة المستقبل",
     subtitle: "رؤية مصر 2030 - نحو غدٍ أفضل",
-    image: "https://aqaryamasr.com/blog/wp-content/uploads/2022/11/%D8%A7%D9%84%D8%A8%D8%B1%D8%AC-%D8%A7%D9%84%D8%A3%D9%8A%D9%82%D9%88%D9%86%D9%8I-%D8%A7%D9%84%D8%B9%D8%A7%D8%B5%D9%85%D8%A9-%D8%A7%D9%84%D8%A5%D8%AF%D8%A7%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9-The-Iconic-Tower-New-Capital-1.jpg",
+    image: "https://aqaryamasr.com/blog/wp-content/uploads/2022/11/%D8%A7%D9%84%D8%A8%D8%B1%D8%AC-%D8%A7%D9%84%D8%A3%D9%8A%D9%82%D9%88%D9%86%D9%8A-%D8%A7%D9%84%D8%B9%D8%A7%D8%B5%D9%85%D8%A9-%D8%A7%D9%84%D8%A5%D8%AF%D8%A7%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9-The-Iconic-Tower-New-Capital-1.jpg",
     quote: "مصر تبني... مصر تتقدم",
     author: "رؤية 2030"
   },
@@ -172,7 +172,7 @@ const modernAchievements = [
   {
     title: "العاصمة الإدارية الجديدة",
     description: "مدينة المستقبل الذكية",
-    image: "https://www.exam-eg.com/wp-content/uploads/2022/12/%D8%A7%D9%84%D8%B9%D8%A7%D8%B5%D9%85%D8%A9-%D8%A7%D9%84%D8%A7%D8%AF%D8%A7%D8%B1%D9%8A%D8%A9.jpg",
+    image: "/images/capital.jpg",
     stats: {
       area: "170,000 فدان",
       towers: "20 برج",
@@ -196,7 +196,7 @@ const modernAchievements = [
   {
     title: "المشروعات القومية",
     description: "مشروعات عملاقة لتنمية مصر",
-    image: "https://buildersofegypt.com/wp-content/uploads/2024/06/%D8%B5%D9%88%D8%B1%D8%A9-%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9-%D8%B3%D8%AF-%D8%AA%D9%86%D8%B2%D8%A7%D9%86%D9%8A%D8%A7-2.jpg",
+    image: "https://www.exam-eg.com/wp-content/uploads/2022/12/%D8%A7%D9%84%D8%B9%D8%A7%D8%B5%D9%85%D8%A9-%D8%A7%D9%84%D8%A7%D8%AF%D8%A7%D8%B1%D9%8A%D8%A9.jpg",
     stats: {
       investment: "تريليون جنيه",
       jobs: "5 مليون فرصة عمل",
@@ -264,32 +264,60 @@ const modernAchievements = [
         "التأمين الصحي الشامل"
       ]
     }
+  },
+  {
+    title: "التعليم والبحث العلمي",
+    description: "تطوير منظومة التعليم والبحث العلمي",
+    image: "https://www.shutterstock.com/shutterstock/videos/3576375319/thumb/9.jpg?ip=x480",
+    stats: {
+      universities: "27 جامعة",
+      schools: "100 ألف فصل",
+      research: "50 مركز بحثي"
+    },
+    details: {
+      initiatives: [
+        "التحول الرقمي في التعليم",
+        "الجامعات التكنولوجية",
+        "مدارس النيل",
+        "بنك المعرفة المصري"
+      ],
+      achievements: [
+        "تطوير المناهج التعليمية",
+        "التوسع في التعليم الفني",
+        "دعم البحث العلمي",
+        "التعاون الدولي الأكاديمي"
+      ]
+    }
   }
 ];
 
 export default function PyramidScene() {
   const [selectedEra, setSelectedEra] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 6000);
+    }, 5000);
+
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-b from-stone-900 via-sand-900 to-stone-900">
+
+
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0 z-0"
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.7 }}
+            className="absolute inset-0"
           >
             <Image
               src={heroSlides[currentSlide].image}
@@ -298,116 +326,193 @@ export default function PyramidScene() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
           </motion.div>
         </AnimatePresence>
 
-        <div className="relative z-10 text-center px-4">
+        {/* Navigation Arrows */}
+        <button
+          onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+          className="absolute left-4 z-20 text-sand-100 hover:text-kemet-gold transition-colors transform hover:scale-110 group"
+        >
+          <div className="relative bg-black/30 backdrop-blur-md rounded-full p-3 group-hover:bg-black/50 transition-all">
+            <motion.svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              whileHover={{ x: -3 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </motion.svg>
+          </div>
+        </button>
+
+        <button
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
+          className="absolute right-4 z-20 text-sand-100 hover:text-kemet-gold transition-colors transform hover:scale-110 group"
+        >
+          <div className="relative bg-black/30 backdrop-blur-md rounded-full p-3 group-hover:bg-black/50 transition-all">
+            <motion.svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              whileHover={{ x: 3 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </motion.svg>
+          </div>
+        </button>
+
+        <div className="relative z-10 text-center px-4 flex flex-col items-center justify-center min-h-screen">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ y: 30, opacity: 0 }}
+              initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -30, opacity: 0 }}
-              transition={{ duration: 0.8 }}
+              exit={{ y: -50, opacity: 0 }}
+              transition={{ duration: 0.7, type: "spring", stiffness: 100 }}
             >
-              <h1 className="text-6xl md:text-8xl font-bold text-kemet-gold mb-6 drop-shadow-2xl">
+              <h1 className="text-6xl md:text-8xl font-bold text-kemet-gold mb-8 text-shadow-lg">
                 {heroSlides[currentSlide].title}
               </h1>
-              <p className="text-xl md:text-2xl text-sand-100 max-w-2xl mx-auto mb-8 font-light tracking-wide">
+              <p className="text-xl md:text-3xl text-sand-100 max-w-4xl mx-auto mb-8 text-shadow">
                 {heroSlides[currentSlide].subtitle}
               </p>
-              <div className="bg-kemet-gold/10 backdrop-blur-sm border border-kemet-gold/20 p-6 rounded-2xl inline-block">
-                <p className="text-sand-200 italic text-lg mb-2">"{heroSlides[currentSlide].quote}"</p>
-                <p className="text-kemet-gold text-sm font-bold">- {heroSlides[currentSlide].author}</p>
-              </div>
+              <blockquote className="text-lg md:text-xl text-sand-200 italic mb-12">
+                "{heroSlides[currentSlide].quote}"
+                <footer className="text-sm text-sand-300 mt-2">- {heroSlides[currentSlide].author}</footer>
+              </blockquote>
             </motion.div>
           </AnimatePresence>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            animate={{
+              y: [0, 10, 0],
+              opacity: [1, 0.5, 1]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            onClick={() => document.getElementById('history')?.scrollIntoView({ behavior: 'smooth' })}
+            className="cursor-pointer"
+          >
+            <div className="flex flex-col items-center gap-2">
+              <span className="text-sand-200 text-sm">اكتشف المزيد</span>
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-6 h-10 border-2 border-sand-200 rounded-full flex justify-center mt-2"
+              >
+                <motion.div
+                  animate={{ y: [0, 12, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="w-1 h-2 bg-kemet-gold rounded-full mt-2"
+                />
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
 
-        {/* Navigation Arrows */}
-        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-12 z-20 pointer-events-none">
-          <button
-            onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
-            className="p-4 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-kemet-gold hover:text-stone-950 transition-all pointer-events-auto"
-          >
-            ←
-          </button>
-          <button
-            onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
-            className="p-4 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-kemet-gold hover:text-stone-950 transition-all pointer-events-auto"
-          >
-            →
-          </button>
-        </div>
-
-        {/* Dots */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-          {heroSlides.map((_, i) => (
+        {/* Slider Pagination */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+          {heroSlides.map((_, index) => (
             <button
-              key={i}
-              onClick={() => setCurrentSlide(i)}
-              className={`w-3 h-3 rounded-full transition-all ${currentSlide === i ? 'bg-kemet-gold w-10' : 'bg-white/30'}`}
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index
+                  ? 'bg-kemet-gold w-8'
+                  : 'bg-sand-100/50 hover:bg-sand-100'
+                }`}
             />
           ))}
         </div>
       </section>
 
-      {/* Encyclopedia Section */}
-      <section id="encyclopedia" className="py-32 relative overflow-hidden bg-stone-950 border-t border-kemet-gold/10">
-        <EgyptInfo />
-      </section>
-
       {/* Timeline Section */}
-      <section id="history" className="py-32 bg-stone-900/30">
+      <section id="history" className="py-20 relative">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl font-bold text-kemet-gold text-center mb-20 flex items-center justify-center gap-4">
-            <span className="h-0.5 w-12 bg-kemet-gold/30"></span>
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl font-bold text-kemet-gold text-center mb-16"
+          >
             رحلة عبر الزمن
-            <span className="h-0.5 w-12 bg-kemet-gold/30"></span>
-          </h2>
+          </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {timelineData.map((era, index) => (
               <motion.div
                 key={era.era}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative h-[500px] rounded-3xl overflow-hidden cursor-pointer shadow-2xl"
-                onMouseEnter={() => setSelectedEra(index)}
-                onMouseLeave={() => setSelectedEra(null)}
+                transition={{ delay: index * 0.2 }}
+                className="relative group"
               >
-                <Image src={era.image} alt={era.era} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent" />
+                <div
+                  className="relative h-[400px] rounded-lg overflow-hidden cursor-pointer"
+                  onMouseEnter={() => setSelectedEra(index)}
+                  onMouseLeave={() => setSelectedEra(null)}
+                >
+                  <Image
+                    src={era.image}
+                    alt={era.era}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent rounded-lg" />
 
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <span className="text-kemet-gold text-sm font-bold mb-2 block">{era.year}</span>
-                  <h3 className="text-3xl font-bold text-white mb-2">{era.era}</h3>
-                  <p className="text-sand-200 line-clamp-2">{era.info}</p>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-500">
+                    <h3 className="text-3xl font-bold text-kemet-gold mb-2">{era.era}</h3>
+                    <p className="text-sand-100 text-lg mb-2">{era.year}</p>
+                    <p className="text-sand-200">{era.info}</p>
+                  </div>
+
+                  <AnimatePresence>
+                    {selectedEra === index && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{
+                          duration: 0.4,
+                          ease: [0.4, 0, 0.2, 1]
+                        }}
+                        className="absolute inset-0 bg-black/95 backdrop-blur-sm p-6 flex flex-col justify-center"
+                      >
+                        <h4 className="text-2xl font-bold text-kemet-gold mb-4">أهم الإنجازات</h4>
+                        <ul className="space-y-2">
+                          {era.achievements.map((achievement, i) => (
+                            <motion.li
+                              key={i}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{
+                                delay: i * 0.1,
+                                duration: 0.3,
+                                ease: "easeOut"
+                              }}
+                              className="text-sand-100 flex items-center gap-2"
+                            >
+                              <span className="text-kemet-gold">•</span>
+                              {achievement}
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-
-                <AnimatePresence>
-                  {selectedEra === index && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="absolute inset-0 bg-stone-950/95 backdrop-blur-md p-8 flex flex-col justify-center"
-                    >
-                      <h4 className="text-2xl font-bold text-kemet-gold mb-6 border-b border-kemet-gold/20 pb-4">أهم الإنجازات</h4>
-                      <ul className="space-y-4">
-                        {era.achievements.map((a, i) => (
-                          <li key={i} className="flex gap-3 text-sand-100 items-start">
-                            <span className="text-kemet-gold text-xl">𓂀</span>
-                            <span>{a}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </motion.div>
             ))}
           </div>
@@ -415,30 +520,69 @@ export default function PyramidScene() {
       </section>
 
       {/* Modern Egypt Section */}
-      <section id="modern" className="py-32 bg-stone-950">
+      <section id="modern" className="py-20 bg-gradient-to-b from-stone-900 to-sand-900">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl font-bold text-kemet-gold text-center mb-20">مصر الحديثة</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            {modernAchievements.map((ach, i) => (
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl font-bold text-kemet-gold text-center mb-16"
+          >
+            مصر الحديثة
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {modernAchievements.map((achievement, index) => (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+                key={achievement.title}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="bg-stone-900/50 rounded-3xl overflow-hidden border border-white/5 hover:border-kemet-gold/30 transition-all group"
+                className="bg-black/30 rounded-2xl overflow-hidden group hover:shadow-2xl transition-all duration-500"
               >
-                <div className="relative h-64 overflow-hidden">
-                  <Image src={ach.image} alt={ach.title} fill className="object-cover transition-transform group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 to-transparent" />
+                <div className="relative h-[300px] overflow-hidden">
+                  <Image
+                    src={achievement.image}
+                    alt={achievement.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 </div>
+
                 <div className="p-8">
-                  <h3 className="text-3xl font-bold text-kemet-gold mb-4">{ach.title}</h3>
-                  <p className="text-sand-200 mb-8 leading-relaxed">{ach.description}</p>
-                  <div className="grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
-                    {Object.entries(ach.stats).map(([k, v]) => (
-                      <div key={k} className="text-center">
-                        <div className="text-xl font-black text-white mb-1">{v}</div>
-                        <div className="text-[10px] uppercase tracking-widest text-sand-400">{k}</div>
+                  <h3 className="text-3xl font-bold text-kemet-gold mb-4">{achievement.title}</h3>
+                  <p className="text-sand-100 text-lg mb-6">{achievement.description}</p>
+
+                  <div className="grid grid-cols-3 gap-4">
+                    {Object.entries(achievement.stats).map(([key, value]) => (
+                      <div key={key} className="text-center">
+                        <p className="text-2xl font-bold text-kemet-gold mb-1">{value}</p>
+                        <p className="text-sand-200 text-sm">
+                          {key === 'revenue' ? 'الإيرادات السنوية' :
+                            key === 'investment' ? 'الاستثمارات السنوية' :
+                              key === 'population' ? 'السكان' :
+                                key === 'area' ? 'المساحة' :
+                                  key === 'sectors' ? 'القطاعات' :
+                                    key === 'goals' ? 'الأهداف' :
+                                      key === 'ships' ? 'السفن يومياً' :
+                                        key === 'length' ? 'الطول' :
+                                          key === 'towers' ? 'الأبراج' :
+                                            key === 'bridges' ? 'الكباري' :
+                                              key === 'housing' ? 'الوحدات السكنية' :
+                                                key === 'roads' ? 'الطرق' :
+                                                  key === 'cities' ? 'المدن الجديدة' :
+                                                    key === 'jobs' ? 'فرص العمل' :
+                                                      key === 'renewable' ? 'الطاقة المتجددة' :
+                                                        key === 'power' ? 'القدرة الكهربائية' :
+                                                          key === 'gas' ? 'الغاز الطبيعي' :
+                                                            key === 'health' ? 'المنشآت الصحية' :
+                                                              key === 'support' ? 'الدعم السنوي' :
+                                                                key === 'universities' ? 'الجامعات الجديدة' :
+                                                                  key === 'schools' ? 'الفصول الدراسية' :
+                                                                    key === 'research' ? 'المراكز البحثية' : key}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -450,54 +594,412 @@ export default function PyramidScene() {
       </section>
 
       {/* Vision 2030 Section */}
-      <section id="vision" className="py-32 bg-stone-900/30">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-5xl font-bold text-kemet-gold mb-6 italic">رؤية مصر 2030</h2>
-          <p className="text-sand-300 max-w-2xl mx-auto mb-16">إستراتيجية التنمية المستدامة نحو اقتصاد تنافسي، متوازن ومتنوع</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { t: "هدف استراتيجي", d: "تحسين جودة حياة المواطن المصري ورفع مستوى معيشته", i: "🎯" },
-              { t: "عدالة اجتماعية", d: "تحقيق العدالة والمساندة المتبادلة بين جميع فئات المجتمع", i: "⚖️" },
-              { t: "اقتصاد قوي", d: "اقتصاد متقدم يضمن توفير فرص عمل لائقة للجميع", i: "📈" }
-            ].map((v, i) => (
-              <div key={i} className="p-10 bg-black/40 rounded-3xl border border-kemet-gold/10 hover:border-kemet-gold/40 transition-all">
-                <div className="text-5xl mb-6">{v.i}</div>
-                <h3 className="text-2xl font-bold text-white mb-4">{v.t}</h3>
-                <p className="text-sand-400">{v.d}</p>
-              </div>
+      <section id="vision" className="py-20 bg-gradient-to-b from-sand-900 to-stone-900">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl font-bold text-kemet-gold text-center mb-16"
+          >
+            رؤية مصر 2030
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {modernAchievements[0]?.details?.mainGoals?.map((goal, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="bg-black/30 rounded-xl p-6 hover:bg-black/40 transition-all duration-300"
+              >
+                <div className="text-kemet-gold text-4xl mb-4">
+                  {index + 1}
+                </div>
+                <h3 className="text-xl font-bold text-sand-100 mb-2">
+                  {goal}
+                </h3>
+                <p className="text-sand-200">
+                  {modernAchievements[0]?.details?.projects?.[index]}
+                </p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* About Section (Team) */}
-      <section id="about" className="py-32 bg-stone-950">
+      {/* About Egypt Section */}
+      <section id="about" className="py-20 bg-gradient-to-b from-stone-900 to-sand-900">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl font-bold text-kemet-gold text-center mb-20 flex items-center justify-center gap-4">
-            <span className="text-3xl">𓂀</span>
-            فريق العمل
-            <span className="text-3xl">𓂀</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            <div className="bg-stone-900/80 p-10 rounded-3xl border border-kemet-gold/20 flex flex-col items-center text-center">
-              <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-kemet-gold mb-6">
-                <Image src="https://media-hbe1-1.cdn.whatsapp.net/v/t61.24694-24/56106005_562937790779117_4335318350537162752_n.jpg?ccb=11-4&oh=01_Q5AaIMP2D2Nx_FTFw4wYP2B279BJQTdm_sAgWgwOkPwQy4j0&oe=6783E6A9&_nc_sid=5e03e0&_nc_cat=100" alt="Special thanks" width={128} height={128} className="object-cover" />
-              </div>
-              <h3 className="text-2xl font-bold text-kemet-gold mb-2">شكر خاص</h3>
-              <p className="text-white font-bold mb-4">د. نبيل الغمري</p>
-              <p className="text-sand-400">رئيس قسم الوسائط المتعددة - كلية iAEMS</p>
-            </div>
-            <div className="bg-stone-900/80 p-10 rounded-3xl border border-kemet-gold/20 flex flex-col items-center text-center">
-              <div className="w-32 h-32 rounded-full bg-kemet-gold/20 flex items-center justify-center border-2 border-kemet-gold mb-6">
-                <span className="text-5xl text-kemet-gold">𓃭</span>
-              </div>
-              <h3 className="text-2xl font-bold text-kemet-gold mb-2">عن المطور</h3>
-              <p className="text-white font-bold mb-4">Jack (Eneryu)</p>
-              <p className="text-sand-400">مطور ومصمم المشروع - خريج كلية iAEMS</p>
-            </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl font-bold text-kemet-gold text-center mb-16"
+          >
+            عن مصر
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-black/30 rounded-2xl overflow-hidden p-8"
+            >
+              <h3 className="text-3xl font-bold text-kemet-gold mb-6">الموقع الاستراتيجي</h3>
+              <p className="text-sand-100 text-lg mb-4">
+                تقع مصر في قلب العالم، حيث تربط بين قارات آسيا وأفريقيا وأوروبا عبر قناة السويس.
+              </p>
+              <ul className="space-y-3 text-sand-200">
+                <li>• المساحة: 1,001,450 كم²</li>
+                <li>• عدد السكان: 104 مليون نسمة</li>
+                <li>• العاصمة: القاهرة</li>
+                <li>• اللغة الرسمية: العربية</li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-black/30 rounded-2xl overflow-hidden p-8"
+            >
+              <h3 className="text-3xl font-bold text-kemet-gold mb-6">التنوع الثقافي</h3>
+              <p className="text-sand-100 text-lg mb-4">
+                تتميز مصر بتنوع ثقافي وحضاري فريد يمتد عبر آلاف السنين.
+              </p>
+              <ul className="space-y-3 text-sand-200">
+                <li>• 7 مواقع تراث عالمي</li>
+                <li>• أكثر من 100 متحف</li>
+                <li>• تنوع في الفنون والموسيقى</li>
+                <li>• مطبخ مصري غني بالنكهات</li>
+              </ul>
+            </motion.div>
           </div>
         </div>
       </section>
+
+      {/* Did You Know Section */}
+      <section id="didyouknow" className="py-20 bg-gradient-to-b from-stone-900 to-sand-900">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl font-bold text-kemet-gold text-center mb-16"
+          >
+            هل تعلم؟
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-black/30 rounded-2xl p-8"
+            >
+              <h3 className="text-2xl font-bold text-kemet-gold mb-4">حقائق مثيرة عن مصر القديمة</h3>
+              <ul className="space-y-4 text-sand-100 text-lg">
+                <li className="flex items-start gap-2">
+                  <span className="text-kemet-gold mt-1">•</span>
+                  المصريون ليسوا عرباً، بل هم أحفاد الفراعنة وأصحاب أقدم حضارة في التاريخ
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-kemet-gold mt-1">•</span>
+                  اخترع المصريون القدماء التقويم السنوي المكون من 365 يوماً
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-kemet-gold mt-1">•</span>
+                  بنى المصريون أول مبنى حجري في التاريخ وهو هرم زوسر المدرج
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-kemet-gold mt-1">•</span>
+                  كانت مصر أول دولة مركزية موحدة في التاريخ
+                </li>
+              </ul>
+              <div className="mt-8">
+                <Link
+                  href="/museum"
+                  className="inline-flex items-center gap-2 bg-kemet-gold text-stone-900 px-8 py-3 rounded-full font-bold hover:bg-sand-100 transition-colors group"
+                >
+                  اكتشف المزيد في المتحف
+                  <motion.span
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    ←
+                  </motion.span>
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-black/30 rounded-2xl p-8"
+            >
+              <h3 className="text-2xl font-bold text-kemet-gold mb-4">إنجازات علمية مذهلة</h3>
+              <ul className="space-y-4 text-sand-100 text-lg">
+                <li className="flex items-start gap-2">
+                  <span className="text-kemet-gold mt-1">•</span>
+                  طور المصريون القدماء علم الطب وأجروا عمليات جراحية معقدة
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-kemet-gold mt-1">•</span>
+                  استخدموا الرياضيات المتقدمة في بناء الأهرامات والمعابد
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-kemet-gold mt-1">•</span>
+                  اخترعوا الكتابة وصناعة الورق من نبات البردي
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-kemet-gold mt-1">•</span>
+                  طوروا نظام ري متقدم باستخدام فيضان النيل
+                </li>
+              </ul>
+              <div className="mt-8">
+                <Link
+                  href="/museum"
+                  className="inline-flex items-center gap-2 bg-kemet-gold text-stone-900 px-8 py-3 rounded-full font-bold hover:bg-sand-100 transition-colors group"
+                >
+                  شاهد الاكتشافات في المتحف
+                  <motion.span
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    ←
+                  </motion.span>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Credits Section */}
+      <section className="py-20 bg-gradient-to-b from-sand-900 to-stone-900">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl font-bold text-kemet-gold text-center mb-16 flex items-center justify-center gap-4"
+          >
+            <span className="text-4xl">☥</span>
+            فريق العمل
+            <span className="text-4xl">☥</span>
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative mb-20">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-black/30 rounded-2xl p-8 hover:bg-black/40 transition-all duration-300 h-full"
+            >
+              <div className="flex flex-col items-center text-center">
+                <div className="w-40 h-40 mb-6">
+                  <div className="w-full h-full rounded-full overflow-hidden border-2 border-kemet-gold shadow-lg relative">
+                    <Image
+                      src="https://media-hbe1-1.cdn.whatsapp.net/v/t61.24694-24/56106005_562937790779117_4335318350537162752_n.jpg?ccb=11-4&oh=01_Q5AaIMP2D2Nx_FTFw4wYP2B279BJQTdm_sAgWgwOkPwQy4j0&oe=6783E6A9&_nc_sid=5e03e0&_nc_cat=100"
+                      alt="Dr. Nabil"
+                      fill
+                      className="object-cover"
+                      style={{ clipPath: 'circle(50%)' }}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-kemet-gold mb-3">شكر خاص</h3>
+                  <h4 className="text-xl font-semibold text-sand-100 mb-2">د. نبيل الغمري</h4>
+                  <p className="text-sand-200 text-lg leading-relaxed">
+                    رئيس قسم الوسائط المتعددة في كلية iAEMS
+                  </p>
+                  <p className="text-sand-100 text-lg mt-4">
+                    شكراً على توجيهك وقيادتك المستمرة لنا. أنت قدوة في العطاء والإخلاص، نعتز بك قائداً ومعلماً.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Decorative Separator */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block">
+              <div className="h-48 w-0.5 bg-gradient-to-b from-transparent via-kemet-gold to-transparent"></div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-black/30 rounded-2xl p-8 hover:bg-black/40 transition-all duration-300 h-full"
+            >
+              <div className="flex flex-col items-center text-center">
+                <div className="w-40 h-40 mb-6">
+                  <div className="w-full h-full rounded-full overflow-hidden border-2 border-kemet-gold shadow-lg bg-sand-800 flex items-center justify-center">
+                    <span className="text-6xl text-kemet-gold">م</span>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-kemet-gold mb-3">عن المطور</h3>
+                  <h4 className="text-xl font-semibold text-sand-100 mb-2">Eneryu (جاك)</h4>
+                  <p className="text-sand-200 text-lg leading-relaxed">
+                    مطور ويب وتطبيقات | 3D Artist | كاتب محتوى إبداعي
+                    <br />
+                    خريج كلية iAEMS [ درجة إمتياز ] قسم الوسائط المتعددة
+                  </p>
+                  <p className="text-sand-100 text-lg mt-4">
+                    مشروع شخصي تم تطويره كتجربة تفاعلية لإلهام طلاب iAEMS وإظهار إمكانيات التقنيات الحديثة في عرض تراثنا العريق.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Hieroglyphic Quote */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="w-full"
+          >
+            <div className="relative bg-gradient-to-b from-black/40 to-black/20 p-12 rounded-2xl border border-kemet-gold/30">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div className="w-20 h-10 bg-stone-900 border-2 border-kemet-gold rounded-full flex items-center justify-center">
+                  <span className="text-kemet-gold text-2xl">𓂀</span>
+                </div>
+              </div>
+
+              <div className="text-kemet-gold text-3xl mb-6 tracking-[0.3em] opacity-90 text-center">𓂀 𓃭 𓆣 𓇯 𓈖</div>
+
+              <p className="font-noto-kufi-arabic text-2xl text-sand-100 text-center relative inline-block w-full px-12">
+                <span className="absolute -left-2 top-0 text-kemet-gold text-4xl opacity-80">"</span>
+                من يزرع المعرفة يحصد المستقبل
+                <span className="absolute -right-2 bottom-0 text-kemet-gold text-4xl opacity-80">"</span>
+              </p>
+
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
+                <div className="w-20 h-10 bg-stone-900 border-2 border-kemet-gold rounded-full flex items-center justify-center">
+                  <span className="text-kemet-gold text-2xl">𓂀</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-b from-stone-900 to-black py-12 border-t-2 border-kemet-gold/30" dir="rtl">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-8">
+            <div className="text-right">
+              <h3 className="text-3xl font-bold text-kemet-gold mb-4 flex items-center gap-2">
+                <span className="text-2xl">𓃭</span>
+                كيمت
+                <span className="text-2xl">𓃭</span>
+              </h3>
+              <p className="text-sand-200 text-sm md:text-base font-noto-kufi-arabic">
+                اكتشف عظمة الحضارة المصرية القديمة والحديثة من خلال رحلة تفاعلية عبر العصور
+              </p>
+            </div>
+
+            <div className="text-right">
+              <h3 className="text-2xl font-bold text-kemet-gold mb-4 flex items-center gap-2">
+                <span className="text-xl">𓂀</span>
+                تواصل معنا
+                <span className="text-xl">𓂀</span>
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <a href="mailto:contact@kemet.eg" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
+                    <span className="text-kemet-gold text-sm">𓃾</span>
+                    البريد الإلكتروني
+                  </a>
+                </li>
+                <li>
+                  <a href="tel:+201234567890" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
+                    <span className="text-kemet-gold text-sm">𓃾</span>
+                    الهاتف
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="text-right">
+              <h3 className="text-2xl font-bold text-kemet-gold mb-4 flex items-center gap-2">
+                <span className="text-xl">𓂀</span>
+                روابط سريعة
+                <span className="text-xl">𓂀</span>
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="#history" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
+                    <span className="text-kemet-gold text-sm">𓆣</span>
+                    التاريخ
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#modern" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
+                    <span className="text-kemet-gold text-sm">𓆣</span>
+                    مصر الحديثة
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/gallery" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
+                    <span className="text-kemet-gold text-sm">𓆣</span>
+                    المعرض
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/museum" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
+                    <span className="text-kemet-gold text-sm">𓆣</span>
+                    المتحف
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="text-right">
+              <h3 className="text-2xl font-bold text-kemet-gold mb-4 flex items-center gap-2">
+                <span className="text-xl">𓂀</span>
+                تابعنا
+                <span className="text-xl">𓂀</span>
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
+                    <span className="text-kemet-gold text-sm">𓃾</span>
+                    فيسبوك
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
+                    <span className="text-kemet-gold text-sm">𓃾</span>
+                    تويتر
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sand-200 hover:text-kemet-gold transition-colors text-sm md:text-base flex items-center gap-2">
+                    <span className="text-kemet-gold text-sm">𓃾</span>
+                    انستجرام
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-kemet-gold/30 mt-12 pt-8 text-center">
+            <p className="text-sand-300 text-sm md:text-base flex items-center justify-center gap-3">
+              <span className="text-kemet-gold">𓂋</span>
+              جميع الحقوق محفوظة © 2024 - {new Date().getFullYear()} كيميت
+              <span className="text-kemet-gold">𓂋</span>
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
-}
+} 

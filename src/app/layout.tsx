@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Noto_Kufi_Arabic } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 
 const notoKufiArabic = Noto_Kufi_Arabic({
   subsets: ['arabic'],
@@ -10,7 +9,6 @@ const notoKufiArabic = Noto_Kufi_Arabic({
 })
 
 export const metadata: Metadata = {
-  // ... (metadata content unchanged)
   title: {
     default: 'كيمت | رحلة عبر الحضارة المصرية',
     template: '%s | كيمت'
@@ -21,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'كيمت | رحلة عبر الحضارة المصرية',
     description: 'استكشف عظمة مصر عبر العصور في تجربة بصرية فريدة',
-    url: 'https://kemet-virid.vercel.app',
+    url: 'https://kemet-egyption-civilization.vercel.app',
     siteName: 'كيمت',
     images: [
       {
@@ -53,7 +51,6 @@ export default function RootLayout({
       <body className={notoKufiArabic.className}>
         <Header />
         {children}
-        <Footer />
       </body>
     </html>
   )

@@ -118,30 +118,31 @@ export default function EgyptInfo() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4">
       <motion.h2
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-5xl font-bold text-kemet-gold text-center mb-16"
+        className="text-5xl font-bold text-kemet-gold text-center mb-16 select-none"
       >
         موسوعة مصر
       </motion.h2>
 
-      <div className="relative">
-        {/* Navigation Arrows */}
+      <div className="relative max-w-5xl mx-auto">
+        {/* Navigation Arrows - Adjusted position and z-index */}
         <button
           onClick={prevSection}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-sand-100 hover:text-kemet-gold transition-colors transform hover:scale-110 group"
+          className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-30 text-sand-100/70 hover:text-kemet-gold transition-colors transform hover:scale-110 active:scale-95 hidden md:block"
+          aria-label="Previous Section"
         >
-          <div className="relative bg-black/30 backdrop-blur-md rounded-full p-3 group-hover:bg-black/50 transition-all">
+          <div className="relative bg-black/40 backdrop-blur-md rounded-full p-4 border border-white/10 hover:border-kemet-gold/50 transition-all">
             <motion.svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              whileHover={{ x: -3 }}
+              whileHover={{ x: -5 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -151,16 +152,17 @@ export default function EgyptInfo() {
 
         <button
           onClick={nextSection}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-sand-100 hover:text-kemet-gold transition-colors transform hover:scale-110 group"
+          className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-30 text-sand-100/70 hover:text-kemet-gold transition-colors transform hover:scale-110 active:scale-95 hidden md:block"
+          aria-label="Next Section"
         >
-          <div className="relative bg-black/30 backdrop-blur-md rounded-full p-3 group-hover:bg-black/50 transition-all">
+          <div className="relative bg-black/40 backdrop-blur-md rounded-full p-4 border border-white/10 hover:border-kemet-gold/50 transition-all">
             <motion.svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              whileHover={{ x: 3 }}
+              whileHover={{ x: 5 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -168,44 +170,51 @@ export default function EgyptInfo() {
           </div>
         </button>
 
-        {/* Content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSection}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5 }}
-            className="bg-black/30 backdrop-blur-md rounded-2xl p-8 border border-kemet-gold/20"
-          >
-            <h3 className="text-3xl font-bold text-kemet-gold mb-6">
-              {egyptInfo[currentSection].title}
-            </h3>
-            <div className="space-y-4">
-              {egyptInfo[currentSection].content.map((paragraph, index) => (
-                <motion.p
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-sand-100 leading-relaxed text-lg"
-                >
-                  {paragraph}
-                </motion.p>
-              ))}
-            </div>
-          </motion.div>
-        </AnimatePresence>
+        {/* Content Card */}
+        <div className="relative min-h-[400px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSection}
+              initial={{ opacity: 0, x: 50, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: -50, scale: 0.95 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="bg-stone-900/60 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-kemet-gold/20 shadow-2xl relative z-20 min-h-[400px] flex flex-col justify-center"
+            >
+              <h3 className="text-3xl md:text-4xl font-bold text-kemet-gold mb-8 text-center border-b border-white/5 pb-4">
+                {egyptInfo[currentSection].title}
+              </h3>
+
+              <div className="space-y-4">
+                {egyptInfo[currentSection].content.map((paragraph, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 + 0.2 }}
+                    className="flex items-start gap-3"
+                  >
+                    <span className="text-kemet-gold text-xl mt-1">•</span>
+                    <p className="text-sand-100 leading-loose text-lg md:text-xl font-light">
+                      {paragraph}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
         {/* Navigation Dots */}
-        <div className="flex justify-center gap-2 mt-8 flex-wrap">
+        <div className="flex justify-center gap-3 mt-10 flex-wrap px-4">
           {egyptInfo.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSection(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSection === index
-                  ? 'bg-kemet-gold w-8'
-                  : 'bg-sand-100/50 hover:bg-sand-100'
+              aria-label={`Go to section ${index + 1}`}
+              className={`h-3 rounded-full transition-all duration-500 ease-out ${currentSection === index
+                  ? 'bg-kemet-gold w-10 shadow-[0_0_10px_rgba(193,155,87,0.5)]'
+                  : 'bg-white/10 w-3 hover:bg-white/30 hover:w-5'
                 }`}
             />
           ))}
