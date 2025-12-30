@@ -11,7 +11,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-11.15-FF0080?style=for-the-badge&logo=framer)](https://www.framer.com/motion/)
 
-[Live Demo](https://kemet-egyption-civilization.vercel.app/) • [Report Bug](https://github.com/eneryu/kemet/issues) • [Request Feature](https://github.com/eneryu/kemet/issues)
+[Live Demo](https://kemet-virid.vercel.app/) • [Report Bug](https://github.com/eneryu/kemet/issues) • [Request Feature](https://github.com/eneryu/kemet/issues)
 
 </div>
 

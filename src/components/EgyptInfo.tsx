@@ -118,7 +118,7 @@ export default function EgyptInfo() {
   };
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 py-12">
       <motion.h2
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -130,16 +130,16 @@ export default function EgyptInfo() {
 
       <div className="relative">
         {/* Navigation Arrows */}
-        <button 
+        <button
           onClick={prevSection}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-sand-100 hover:text-kemet-gold transition-colors transform hover:scale-110 group"
         >
           <div className="relative bg-black/30 backdrop-blur-md rounded-full p-3 group-hover:bg-black/50 transition-all">
-            <motion.svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-8 w-8" 
-              fill="none" 
-              viewBox="0 0 24 24" 
+            <motion.svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
               stroke="currentColor"
               whileHover={{ x: -3 }}
               transition={{ type: "spring", stiffness: 400 }}
@@ -149,16 +149,16 @@ export default function EgyptInfo() {
           </div>
         </button>
 
-        <button 
+        <button
           onClick={nextSection}
           className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-sand-100 hover:text-kemet-gold transition-colors transform hover:scale-110 group"
         >
           <div className="relative bg-black/30 backdrop-blur-md rounded-full p-3 group-hover:bg-black/50 transition-all">
-            <motion.svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-8 w-8" 
-              fill="none" 
-              viewBox="0 0 24 24" 
+            <motion.svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
               stroke="currentColor"
               whileHover={{ x: 3 }}
               transition={{ type: "spring", stiffness: 400 }}
@@ -203,11 +203,10 @@ export default function EgyptInfo() {
             <button
               key={index}
               onClick={() => setCurrentSection(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentSection === index 
-                  ? 'bg-kemet-gold w-8' 
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSection === index
+                  ? 'bg-kemet-gold w-8'
                   : 'bg-sand-100/50 hover:bg-sand-100'
-              }`}
+                }`}
             />
           ))}
         </div>
