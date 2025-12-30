@@ -1,64 +1,64 @@
 {
-    "name": "kemet",
-    "version": "1.0.0",
-    "description": "An immersive journey through ancient and modern Egyptian civilization",
-    "author": {
-        "name": "Eneryu (Jack)",
-        "email": "jackezt4@gmail.com",
-        "url": "https://github.com/eneryu"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/eneryu/kemet.git"
-    },
-    "homepage": "https://kemet-egyption-civilization.vercel.app",
-    "keywords": [
-        "egypt",
-        "civilization",
-        "history",
-        "museum",
-        "nextjs",
-        "typescript",
-        "tailwindcss"
-    ],
-    "private": true,
-    "scripts": {
-        "dev": "next dev --turbopack",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint"
-    },
-    "dependencies": {
-        "@next/font": "^14.2.15",
-        "@prisma/client": "^6.1.0",
-        "@radix-ui/react-dialog": "^1.1.4",
-        "@radix-ui/react-popover": "^1.1.4",
-        "@radix-ui/react-select": "^2.1.4",
-        "@tabler/icons-react": "^3.26.0",
-        "axios": "^1.7.9",
-        "bcryptjs": "^2.4.3",
-        "framer-motion": "^11.15.0",
-        "jsonwebtoken": "^9.0.2",
-        "next": "^15.1.6",
-        "next-themes": "^0.4.4",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0"
-    },
-    "devDependencies": {
-        "@eslint/eslintrc": "^3",
-        "@types/node": "^20",
-        "@types/react": "^19",
-        "@types/react-dom": "^19",
-        "autoprefixer": "^10.4.20",
-        "eslint": "^9",
-        "eslint-config-next": "^15.1.6",
-        "postcss": "^8.4.49",
-        "tailwindcss": "^3.4.17",
-        "typescript": "^5"
-    },
-    "engines": {
-        "node": ">=18.0.0",
-        "npm": ">=9.0.0"
-    }
+  "name": "kemet",
+  "version": "1.0.0",
+  "description": "An immersive journey through ancient and modern Egyptian civilization",
+  "author": {
+    "name": "Eneryu (Jack)",
+    "email": "jackezt4@gmail.com",
+    "url": "https://github.com/eneryu"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eneryu/kemet.git"
+  },
+  "homepage": "https://kemet-egyption-civilization.vercel.app",
+  "keywords": [
+    "egypt",
+    "civilization",
+    "history",
+    "museum",
+    "nextjs",
+    "typescript",
+    "tailwindcss"
+  ],
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "^14.2.15",
+    "@prisma/client": "^6.1.0",
+    "@radix-ui/react-dialog": "^1.1.4",
+    "@radix-ui/react-popover": "^1.1.4",
+    "@radix-ui/react-select": "^2.1.4",
+    "@tabler/icons-react": "^3.26.0",
+    "axios": "^1.7.9",
+    "bcryptjs": "^2.4.3",
+    "framer-motion": "^11.15.0",
+    "jsonwebtoken": "^9.0.2",
+    "next": "15.1.11",
+    "next-themes": "^0.4.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9",
+    "eslint-config-next": "^15.1.6",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
 }
